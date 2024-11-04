@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import random
 import json
+import spacy
+
+nlp = spacy.load("en_core_web_md")
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -24,10 +27,11 @@ def ask_joke():
 @app.route('/check_answer', methods=['POST'])
 def check_answer():
     data = request.json
-    user_answer = data['answer']
-    correct_answer = data['correct_answer']
+    user_answer = nlp(data['answer'])
+    correct_answer = nlp(data['correct_answer'])
+    similarity_score  = user_answer.similarity(correct_answer)
     
-    if user_answer.strip().lower() == correct_answer.strip().lower():
+    if similarity_score > 0.7:
         return jsonify({"response": "Haha! You got it! 🎉"})
     else:
         return jsonify({"response": "Nice try! Would you like a hint?"})
