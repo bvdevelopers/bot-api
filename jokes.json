@@ -1,10 +1,12 @@
 [
     {
         "question": "Why don't scientists trust atoms?",
-        "answer": "Because they make up everything!"
+        "answer": "Because they make up everything!",
+        "hint":"nope try yourself"
     },
     {
         "question": "What do you call fake spaghetti?",
-        "answer": "An impasta!"
+        "answer": "An impasta!",
+        "hint":"nope try yourself"
     }
 ]
