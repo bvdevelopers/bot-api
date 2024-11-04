@@ -4,7 +4,8 @@ import random
 import json
 import spacy
 
-nlp = spacy.load("en_core_web_md")
+model_path = Path(spacy.util.get_package_path("en_core_web_md"))  # Or use the explicit path if required
+nlp = spacy.load(model_path)
 
 # Initialize Flask app
 app = Flask(__name__)
