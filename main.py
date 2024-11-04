@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS
 import random
 import json
 
@@ -18,7 +18,7 @@ jokes = load_jokes()
 
 @app.route('/ask_joke', methods=['GET'])
 def ask_joke():
-    joke = random.choice(jokes)  # Get a random joke from the list
+    joke = random.choice(jokes)
     return jsonify({"question": joke["question"], "hint": joke["hint"], "answer": joke["answer"]})
 
 @app.route('/check_answer', methods=['POST'])
@@ -31,6 +31,3 @@ def check_answer():
         return jsonify({"response": "Haha! You got it! 🎉"})
     else:
         return jsonify({"response": "Nice try! Would you like a hint?"})
-
-if __name__ == '__main__':
-    app.run(debug=True)
