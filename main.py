@@ -3,6 +3,7 @@ from flask_cors import CORS
 import random
 import json
 import spacy
+from pathlib import Path
 
 model_path = Path(spacy.util.get_package_path("en_core_web_md"))  # Or use the explicit path if required
 nlp = spacy.load(model_path)
