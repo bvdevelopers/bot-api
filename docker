@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Command to run the app with waitress on 0.0.0.0
-CMD ["waitress-serve", "--host= bot-api-vr5q.onrender.com", "--port=8080", "main:app"]
+CMD ["waitress-serve", "--host= 0.0.0.0", "--port=5000", "main:app"]
