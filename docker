@@ -10,8 +10,8 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 5000 for Flask
+# Expose the port the app runs on
 EXPOSE 5000
 
-# Command to run the app
-CMD ["python", "main.py"]
+# Run waitress to serve the app
+CMD ["waitress-serve", "--port=5000", "main:app"]
