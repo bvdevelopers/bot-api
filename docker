@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python -m spacy download en_core_web_md
 
 # Expose the port the app will run on
-EXPOSE 8080
+EXPOSE 5000
 
 # Command to run the app with waitress on 0.0.0.0
-CMD ["waitress-serve", "--host= 0.0.0.0", "--port=5000", "main:app"]
+CMD ["waitress-serve", "--host=0.0.0.0", "--port=5000", "main:app"]
