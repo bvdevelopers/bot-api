@@ -10,8 +10,8 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port the app runs on
+# Expose the port the app will run on
 EXPOSE 5000
 
-# Command to run the app
-CMD ["python", "main.py"]
+# Command to run the app with waitress on 0.0.0.0
+CMD ["waitress-serve", "--host=0.0.0.0", "--port=5000", "main:app"]
