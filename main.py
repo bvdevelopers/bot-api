@@ -3,9 +3,6 @@ from flask_cors import CORS
 import random
 import json
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
-
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -34,3 +31,7 @@ def check_answer():
         return jsonify({"response": "Haha! You got it! 🎉"})
     else:
         return jsonify({"response": "Nice try! Would you like a hint?"})
+
+# Run the app if this script is executed directly
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
