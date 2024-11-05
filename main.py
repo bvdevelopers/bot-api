@@ -2,11 +2,11 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import random
 import json
-import spacy
-from pathlib import Path
+# import spacy
+# from pathlib import Path
 
-model_path = Path(spacy.util.get_package_path("en_core_web_md"))  # Or use the explicit path if required
-nlp = spacy.load(model_path)
+# model_path = Path(spacy.util.get_package_path("en_core_web_md"))  # Or use the explicit path if required
+# nlp = spacy.load(model_path)
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -29,12 +29,17 @@ def ask_joke():
 @app.route('/check_answer', methods=['POST'])
 def check_answer():
     data = request.json
-    user_answer = nlp(data['answer'])
-    correct_answer = nlp(data['correct_answer'])
-    similarity_score  = user_answer.similarity(correct_answer)
+    user_answer = data['answer']
+    correct_answer = data['correct_answer']
     
-    if similarity_score > 0.7:
+    if user_answer.strip().lower() == correct_answer.strip().lower():
         return jsonify({"response": "Haha! You got it! 🎉"})
+    # user_answer = nlp(data['answer'])
+    # correct_answer = nlp(data['correct_answer'])
+    # similarity_score  = user_answer.similarity(correct_answer)
+    
+    # if similarity_score > 0.7:
+    #     return jsonify({"response": "Haha! You got it! 🎉"})
     else:
         return jsonify({"response": "Nice try! Would you like a hint?"})
 
